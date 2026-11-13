@@ -1,0 +1,14 @@
+CAUGHT  definite treated as review
+CAUGHT  no policy means pass
+CAUGHT  last value wins
+CAUGHT  invalid value means pass
+CAUGHT  unknown exits clean
+CAUGHT  match block ignored
+CAUGHT  os check skipped
+CAUGHT  policy can override definite
+CAUGHT  citations optional
+CAUGHT  adds shell=True
+CAUGHT  ignores sshd failure
+CAUGHT  time units ignored
+CAUGHT  writes a file
+Missed: 0 of 13

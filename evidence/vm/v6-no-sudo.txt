@@ -1,0 +1,2 @@
+ERROR: sshd -T failed (/etc/ssh/sshd_config.d/50-cloud-init.conf: Permission denied). It usually needs root; this tool never elevates itself, so rerun it with sudo in your lab VM.
+exit=3

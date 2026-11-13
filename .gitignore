@@ -1,0 +1,23 @@
+# Starter pack holds other interns' task files; only the assigned fixtures are copied to fixtures/
+RedKross_Task2_Starter_Pack/
+
+# Assignment sheets contain personal contact details, never commit
+*.xlsx
+
+# Python
+__pycache__/
+*.pyc
+
+# OS / editor
+Thumbs.db
+.DS_Store
+.vscode/
+
+# Video recordings: too large for GitHub, upload to YouTube/Drive instead
+video/
+*.mp4
+*.mkv
+
+# Lab-only SSH key from docs/vm-lab-guide.md, never commit
+redkross_lab_key
+redkross_lab_key.pub

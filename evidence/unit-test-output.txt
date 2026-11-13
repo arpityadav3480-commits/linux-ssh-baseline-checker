@@ -1,0 +1,33 @@
+test_t15_missing_config_file (test_checker.TestFailsSafely.test_t15_missing_config_file) ... ok
+test_t16_binary_config_file (test_checker.TestFailsSafely.test_t16_binary_config_file) ... ok
+test_t17_policy_cannot_override_a_definite_check (test_checker.TestFailsSafely.test_t17_policy_cannot_override_a_definite_check) ... ok
+test_t18_corrupt_baseline (test_checker.TestFailsSafely.test_t18_corrupt_baseline) ... ok
+test_t19_check_without_citation_is_rejected (test_checker.TestFailsSafely.test_t19_check_without_citation_is_rejected) ... ok
+test_t01_known_good_with_policy_all_pass (test_checker.TestKnownStates.test_t01_known_good_with_policy_all_pass) ... ok
+test_t02_known_bad_without_policy_separates_definite_from_policy (test_checker.TestKnownStates.test_t02_known_bad_without_policy_separates_definite_from_policy) ... ok
+test_t03_known_bad_with_policy_turns_reviews_into_fails (test_checker.TestKnownStates.test_t03_known_bad_with_policy_turns_reviews_into_fails) ... ok
+test_t04_known_good_without_policy_still_needs_review_of_approved_values (test_checker.TestKnownStates.test_t04_known_good_without_policy_still_needs_review_of_approved_values) ... ok
+test_t05_one_config_change_is_detected_and_retest_after_fix_passes (test_checker.TestKnownStates.test_t05_one_config_change_is_detected_and_retest_after_fix_passes) ... ok
+test_t06_baseline_agrees_with_starter_pack (test_checker.TestKnownStates.test_t06_baseline_agrees_with_starter_pack) ... ok
+test_t20_unsupported_os_stops_before_running_anything (test_checker.TestLiveMode.test_t20_unsupported_os_stops_before_running_anything) ... ok
+test_t21_missing_os_release (test_checker.TestLiveMode.test_t21_missing_os_release) ... ok
+test_t22_missing_sshd_command (test_checker.TestLiveMode.test_t22_missing_sshd_command) ... ok
+test_t23_sshd_permission_failure_suggests_sudo (test_checker.TestLiveMode.test_t23_sshd_permission_failure_suggests_sudo) ... ok
+test_t24_sshd_timeout (test_checker.TestLiveMode.test_t24_sshd_timeout) ... ok
+test_t25_live_success_runs_only_sshd_test_mode (test_checker.TestLiveMode.test_t25_live_success_runs_only_sshd_test_mode) ... ok
+test_t26_inputs_are_unchanged_after_a_run (test_checker.TestReadOnlyAndReports.test_t26_inputs_are_unchanged_after_a_run) ... ok
+test_t27_source_has_no_way_to_write_or_change_the_system (test_checker.TestReadOnlyAndReports.test_t27_source_has_no_way_to_write_or_change_the_system) ... ok
+test_t28_all_report_formats_include_evidence_and_sources (test_checker.TestReadOnlyAndReports.test_t28_all_report_formats_include_evidence_and_sources) ... ok
+test_t07_first_value_wins_and_keywords_ignore_case (test_checker.TestSshdRules.test_t07_first_value_wins_and_keywords_ignore_case) ... ok
+test_t08_match_block_does_not_change_global_result (test_checker.TestSshdRules.test_t08_match_block_does_not_change_global_result) ... ok
+test_t09_include_is_reported_not_silently_ignored (test_checker.TestSshdRules.test_t09_include_is_reported_not_silently_ignored) ... ok
+test_t10_missing_setting_uses_documented_default_and_says_so (test_checker.TestSshdRules.test_t10_missing_setting_uses_documented_default_and_says_so) ... ok
+test_t11_time_values_convert_to_seconds (test_checker.TestSshdRules.test_t11_time_values_convert_to_seconds) ... ok
+test_t12_allowusers_lines_add_up_and_unapproved_account_fails (test_checker.TestSshdRules.test_t12_allowusers_lines_add_up_and_unapproved_account_fails) ... ok
+test_t13_invalid_value_is_unknown_never_pass (test_checker.TestSshdRules.test_t13_invalid_value_is_unknown_never_pass) ... ok
+test_t14_only_unknown_results_do_not_exit_clean (test_checker.TestSshdRules.test_t14_only_unknown_results_do_not_exit_clean) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 0.101s
+
+OK

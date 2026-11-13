@@ -1,0 +1,7 @@
+{
+  "PasswordAuthentication": ["no"],
+  "X11Forwarding": ["no"],
+  "MaxAuthTries": ["4"],
+  "ClientAliveInterval": ["300"],
+  "AllowUsers": ["trainee-admin"]
+}

@@ -1,0 +1,184 @@
+{
+  "baseline": "RedKross Task 2 SSH baseline v1.0",
+  "source": "fixtures/sshd_config_sample.txt",
+  "host": "not applicable (file review)",
+  "policy": "none supplied; policy-based checks report REVIEW unless they meet the recommendation",
+  "generated_utc": "2026-10-30 16:16:40 UTC",
+  "summary": {
+    "PASS": 1,
+    "FAIL": 1,
+    "REVIEW": 5,
+    "UNKNOWN": 0
+  },
+  "notes": [],
+  "findings": [
+    {
+      "id": "LIN-01",
+      "setting": "PermitRootLogin",
+      "status": "FAIL",
+      "basis": "definite",
+      "severity": "high",
+      "observed": "yes",
+      "expected": "no",
+      "evidence": "fixtures/sshd_config_sample.txt, line 3: PermitRootLogin yes",
+      "rationale": "Root is a known account name with full control of the host. Blocking direct root login forces attackers to guess a username as well, and leaves a record of which named user became root.",
+      "remediation": "Set 'PermitRootLogin no'. First confirm that a non-root account can log in and use sudo.",
+      "references": [
+        {
+          "title": "CIS Benchmark for Ubuntu 24.04 LTS v1.0.0, as mapped by ComplianceAsCode (CIS PDF not read directly)",
+          "url": "https://github.com/ComplianceAsCode/content/blob/master/controls/cis_ubuntu2404.yml",
+          "detail": "Control 5.1.20: Ensure sshd PermitRootLogin is disabled"
+        },
+        {
+          "title": "sshd_config(5), Ubuntu 24.04 manual page",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man5/sshd_config.5.html",
+          "detail": "PermitRootLogin: accepted values; default is prohibit-password"
+        }
+      ]
+    },
+    {
+      "id": "LIN-02",
+      "setting": "PasswordAuthentication",
+      "status": "REVIEW",
+      "basis": "policy",
+      "severity": "medium",
+      "observed": "yes",
+      "expected": "no, or a controlled exception approved by policy",
+      "evidence": "fixtures/sshd_config_sample.txt, line 4: PasswordAuthentication yes",
+      "rationale": "Passwords can be guessed or reused, while key-based login cannot be brute-forced in the same way. Some organisations still allow passwords with compensating controls, so 'yes' is a policy decision.",
+      "remediation": "Set 'PasswordAuthentication no' once every user has a working key, or record an approved exception in the policy file.",
+      "references": [
+        {
+          "title": "sshd_config(5), Ubuntu 24.04 manual page",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man5/sshd_config.5.html",
+          "detail": "PasswordAuthentication: default is yes"
+        },
+        {
+          "title": "CIS Benchmark for Ubuntu 24.04 LTS v1.0.0, as mapped by ComplianceAsCode (CIS PDF not read directly)",
+          "url": "https://github.com/ComplianceAsCode/content/blob/master/controls/cis_ubuntu2404.yml",
+          "detail": "No control for this setting in the mapped benchmark; recommendation comes from the starter baseline"
+        }
+      ]
+    },
+    {
+      "id": "LIN-03",
+      "setting": "PermitEmptyPasswords",
+      "status": "PASS",
+      "basis": "definite",
+      "severity": null,
+      "observed": "no",
+      "expected": "no",
+      "evidence": "fixtures/sshd_config_sample.txt, line 6: PermitEmptyPasswords no",
+      "rationale": "If allowed, an account with an empty password can be logged into by anyone who can reach the SSH port. The starter file lists this check's severity as 'pass'; that is a result, so this baseline rates the risk as high.",
+      "remediation": null,
+      "references": [
+        {
+          "title": "CIS Benchmark for Ubuntu 24.04 LTS v1.0.0, as mapped by ComplianceAsCode (CIS PDF not read directly)",
+          "url": "https://github.com/ComplianceAsCode/content/blob/master/controls/cis_ubuntu2404.yml",
+          "detail": "Control 5.1.19: Ensure sshd PermitEmptyPasswords is disabled"
+        },
+        {
+          "title": "sshd_config(5), Ubuntu 24.04 manual page",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man5/sshd_config.5.html",
+          "detail": "PermitEmptyPasswords: default is no"
+        }
+      ]
+    },
+    {
+      "id": "LIN-04",
+      "setting": "X11Forwarding",
+      "status": "REVIEW",
+      "basis": "policy",
+      "severity": "low",
+      "observed": "yes",
+      "expected": "no, unless policy records that it is required",
+      "evidence": "fixtures/sshd_config_sample.txt, line 7: X11Forwarding yes",
+      "rationale": "The manual warns that X11 forwarding may add exposure to the server and to client displays. Some users need graphical programs over SSH, so 'yes' is a policy decision.",
+      "remediation": "Set 'X11Forwarding no' if nobody needs it. Ubuntu's shipped sshd_config sets it to yes, so check the file as well as the upstream default.",
+      "references": [
+        {
+          "title": "sshd_config(5), Ubuntu 24.04 manual page",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man5/sshd_config.5.html",
+          "detail": "X11Forwarding: default is no; describes the additional exposure; Debian-based packages ship it set to yes"
+        },
+        {
+          "title": "CIS Benchmark for Ubuntu 24.04 LTS v1.0.0, as mapped by ComplianceAsCode (CIS PDF not read directly)",
+          "url": "https://github.com/ComplianceAsCode/content/blob/master/controls/cis_ubuntu2404.yml",
+          "detail": "Related, not identical: control 5.1.8 covers DisableForwarding (Level 2 server, Level 1 workstation)"
+        }
+      ]
+    },
+    {
+      "id": "LIN-05",
+      "setting": "MaxAuthTries",
+      "status": "REVIEW",
+      "basis": "policy",
+      "severity": "medium",
+      "observed": "12",
+      "expected": "4 or lower, or a value approved by policy",
+      "evidence": "fixtures/sshd_config_sample.txt, line 8: MaxAuthTries 12",
+      "rationale": "This limits authentication attempts per connection, which slows password guessing. A higher value is allowed only if policy approves it.",
+      "remediation": "Set 'MaxAuthTries 4', or record the approved value in the policy file.",
+      "references": [
+        {
+          "title": "CIS Benchmark for Ubuntu 24.04 LTS v1.0.0, as mapped by ComplianceAsCode (CIS PDF not read directly)",
+          "url": "https://github.com/ComplianceAsCode/content/blob/master/controls/cis_ubuntu2404.yml",
+          "detail": "Control 5.1.16: Ensure sshd MaxAuthTries is configured (mapped value 4)"
+        },
+        {
+          "title": "sshd_config(5), Ubuntu 24.04 manual page",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man5/sshd_config.5.html",
+          "detail": "MaxAuthTries: default is 6"
+        }
+      ]
+    },
+    {
+      "id": "LIN-06",
+      "setting": "ClientAliveInterval",
+      "status": "REVIEW",
+      "basis": "policy",
+      "severity": "low",
+      "observed": "0",
+      "expected": "the idle timeout approved by policy, in seconds",
+      "evidence": "fixtures/sshd_config_sample.txt, line 9: ClientAliveInterval 0",
+      "rationale": "A value of 0 means the server sends no client-alive messages, so it does not detect unresponsive clients. The right timeout depends on the organisation, so the checker needs an approved value to compare against.",
+      "remediation": "Set an approved value such as 'ClientAliveInterval 300' with 'ClientAliveCountMax 2', and record it in the policy file.",
+      "references": [
+        {
+          "title": "CIS Benchmark for Ubuntu 24.04 LTS v1.0.0, as mapped by ComplianceAsCode (CIS PDF not read directly)",
+          "url": "https://github.com/ComplianceAsCode/content/blob/master/controls/cis_ubuntu2404.yml",
+          "detail": "Control 5.1.7: Ensure sshd ClientAliveInterval and ClientAliveCountMax are configured (mapping notes CIS requires values above 0)"
+        },
+        {
+          "title": "sshd_config(5), Ubuntu 24.04 manual page",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man5/sshd_config.5.html",
+          "detail": "ClientAliveInterval: default is 0, meaning messages are not sent"
+        }
+      ]
+    },
+    {
+      "id": "LIN-07",
+      "setting": "AllowUsers",
+      "status": "REVIEW",
+      "basis": "policy",
+      "severity": "medium",
+      "observed": "*",
+      "expected": "an explicit list of accounts approved by policy",
+      "evidence": "fixtures/sshd_config_sample.txt, line 10: AllowUsers *",
+      "rationale": "By default every user may log in over SSH, including accounts that never need it. Only the organisation knows which accounts are approved, so the checker needs a policy list to compare against.",
+      "remediation": "Set 'AllowUsers' to the approved accounts, and confirm your own account is listed before restarting SSH so you are not locked out.",
+      "references": [
+        {
+          "title": "CIS Benchmark for Ubuntu 24.04 LTS v1.0.0, as mapped by ComplianceAsCode (CIS PDF not read directly)",
+          "url": "https://github.com/ComplianceAsCode/content/blob/master/controls/cis_ubuntu2404.yml",
+          "detail": "Control 5.1.4: Ensure sshd access is configured"
+        },
+        {
+          "title": "sshd_config(5), Ubuntu 24.04 manual page",
+          "url": "https://manpages.ubuntu.com/manpages/noble/man5/sshd_config.5.html",
+          "detail": "AllowUsers: by default, login is allowed for all users"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+Recorded: 2026-11-13 07:10 UTC
+PRETTY_NAME="Ubuntu 24.04.5 LTS"
+VERSION_ID="24.04"
+Kernel: 6.8.0-149-generic
+OpenSSH: 1:9.6p1-3ubuntu13.20
+Python: Python 3.12.3
+Tool file hashes (match the repository copy):
+890d1f229b6667cb4d220750183add4d2118b40513089598585224983a9b558a  baseline_checker.py
+44806545f148b2d7a662d53e7a2296481a3e3d302e87164d9c2fd9f13d447666  baseline/lab_policy.json
+52cdce9a2233c1540318fb215c073dd73a9fb2955de8168c2390fa07d8abbb9d  baseline/ssh_baseline.json
