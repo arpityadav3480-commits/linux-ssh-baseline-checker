@@ -39,8 +39,8 @@ The source for each check is in [docs/check-reference-mapping.md](docs/check-ref
 **Dependencies:** Python 3.10 or later, with no extra packages. Live mode also needs Ubuntu 24.04 and `openssh-server`.
 
 ```bash
-git clone <repository-url>
-cd <repository-folder>
+git clone https://github.com/arpityadav3480-commits/linux-ssh-baseline-checker.git
+cd linux-ssh-baseline-checker
 python3 baseline_checker.py --help
 ```
 
