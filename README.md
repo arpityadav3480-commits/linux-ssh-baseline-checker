@@ -5,7 +5,7 @@ Arpit Yadav, Intern ID 2415
 
 A read-only tool that compares a machine's SSH server settings with a small, cited baseline, then reports the evidence, the risk and a suggested fix for each check.
 
-**Demo video:** *(link to be added)*
+**Demo video:** https://drive.google.com/file/d/1Qy9Yyg9J8FdSAzh3GmPhF6zaVlf21_6Y/view?usp=sharing
 
 ## Why it exists
 
